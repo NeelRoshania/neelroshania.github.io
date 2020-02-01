@@ -14,16 +14,22 @@
 
         <!-- HEADER -->
         <div class="jumbotron">
-            <div class="container">
-                <h1>Text Analytics DAT5317</h1>
-                <h5>Speech-To-Text application with JS webkitSpeechRecognition module</h5>
+            <div class="row">
+                <div class="container">
+                    <h1>Text Analytics - DAT-5317 - FMSBA5</h1>
+                    <h5>A Speech-To-Text application with JS webkitSpeechRecognition module</h5>
+                </div>
+                <div class="container">
+                    <img id="sponsor" src="img/hult.png">
+                    <img id="sponsor" src="img/transparent_sin_border.png">
+                </div>
             </div>
         </div>
 
         <!-- QUESTION RECORDING UNIT -->
         <div class="container">
-            <div class="card border-light mb-3">
-                <h5 class="card-header pt-4 pb-4">Ask a Question</h5>
+            <div class="card border-primary mb-3">
+                <h5 class="card-header pt-4 pb-4">Record your responses</h5>
                 <div class="card-body">
                     <p class="card-text">Specify your question number and start recording!</p>
                     <br>
@@ -38,7 +44,7 @@
 
                     <button class="btn bg-light text-primary" id="record">Record...</button>
                     <button class="btn bg-light text-danger" id="stop">Stop</button>
-                    <button class="btn bg-light text-success" id="complete">Get results!</button>
+                    <button class="btn bg-light text-success" id="complete">View results</button>
                     <p class="text-warning" id="session-status">*Session status</p>
                     <p class="text-primary pt-4 pb-4" id="output">Your transcription will be here...</p>
                 </div>
@@ -52,7 +58,9 @@
             <div class="card border-success mb-3">
                 <h5 class="card-header pt-4 pb-4">Transcription Results</h5>
                 <div class="card-body">
-                    <p class="card-text">Use the <mark>R code</mark> below to pipe the results directly into a <mark>dplyr data_frame</mark>.</p>
+                    <p class="card-text">Tabulated participant responses for each questions asked</p>
+                    <br>
+                    <button class="btn bg-light text-success" id="export-csv">Export CSV</button>
                     <br>
                     <br>
                     <table class="table" id="data-table">
@@ -68,6 +76,24 @@
             </div>    
         </div>
 
+        <!-- Download JSON data as csv -->
+        <br><br>
+        <div class="container" id="r_code">
+            <div class="card border-primary mb-3">
+                    <h5 class="card-header pt-4 pb-4">R Pipeline</h5>
+                    <div class="card-body">
+                        <p class="card-text">Use this <mark>R</mark> code to pipe the results into a <mark>Data Frame</mark>.</p>
+                        <br>
+                        <div class="container">
+                                <code>path <- "C:/Users/YOU/...speech_to_text.csv"<code>
+                                <br>
+                                <code>mydf <- read.csv(path_india)</code>
+                        </div> 
+                        <br>               
+                    </div>
+                </div>
+
+        </div>
     </head>
 
 

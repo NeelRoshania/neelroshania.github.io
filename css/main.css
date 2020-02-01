@@ -5,6 +5,7 @@
 
 #output {
     font-style: italic;
+    font-size: 1.5em;
 }
 
 #session-status {
@@ -14,4 +15,20 @@
 .table th.fit {
     white-space: nowrap;
     width: 1%;
+}
+
+code {
+    color: black;
+    font-size: 1em;
+}
+
+.jumbotron {
+    color: #2D3351;
+    background-color: #F8E4C9;
+}
+
+#sponsor{
+    width: 9em;
+    /* padding-right: 1em; */
+    /* padding-top: 1em; */
 }
