@@ -1,0 +1,17 @@
+#session-status{
+    font-style: italic;
+    font-weight: bold;
+}
+
+#output {
+    font-style: italic;
+}
+
+#session-status {
+    padding-top: 1em;
+}
+
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}

@@ -1,0 +1,61 @@
+<h1>Text Analytics DAT5317</h1>
+<h2>Text to speech application using Google T2S API</h2>
+
+<a id="play">Record</a>
+<a id="stop">Stop</a>
+<!-- <a id="restart">Restart</a> -->
+
+<!-- <audio id="player" controls></audio> -->
+<a id="download">Download</a>
+<div id="output"></div>
+
+<script>
+
+  
+
+//   Initialization
+  const player = document.getElementById('play');
+  const stoper = document.getElementById('stop');
+  const restarter = document.getElementById('restart');
+  const downloadLink = document.getElementById('download');
+
+  const handleSuccess = function(stream) {
+    var mediaRecorder = new MediaRecorder(stream);
+    var chunks = [];
+
+    // start at stop recording
+    player.onclick = function() {
+      mediaRecorder.start();
+      console.log(mediaRecorder.state);
+      console.log("recorder started");
+      player.style.background = "red";
+      player.style.color = "black";
+    }
+
+    stoper.onclick = function() {
+      mediaRecorder.stop();
+      console.log(mediaRecorder.state);
+      console.log("recorder stopped");
+      player.style.background = "";
+      player.style.color = "";
+    }
+
+    mediaRecorder.onstop = function(e) {
+      console.log("data available after MediaRecorder.stop() called.");
+      downloadLink.href = URL.createObjectURL(new Blob(chunks));
+      downloadLink.download = 'recorder.wav';
+      chunks = []
+
+    //   Transcribe audio recording
+    
+    }
+
+    mediaRecorder.ondataavailable = function(e) {
+      chunks.push(e.data);
+    }
+    
+  };
+
+  navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+      .then(handleSuccess);
+</script>

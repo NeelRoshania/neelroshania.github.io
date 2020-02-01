@@ -1,0 +1,67 @@
+<h1>Text Analytics DAT5317</h1>
+<h2>Text to speech application using Google T2S API</h2>
+
+<a id="play">Play</a>
+<a id="stop">Stop</a>
+<a id="restart">Restart</a>
+
+<!-- <audio id="player" controls></audio> -->
+<a id="download">Download</a>
+
+<script>
+//   Initialization
+  const player = document.getElementById('play');
+  const stoper = document.getElementById('stop');
+  const restarter = document.getElementById('restart');
+  const downloadLink = document.getElementById('download');
+  let shouldStop = false;
+  let stopped = false;
+
+  const handleSuccess = function(stream) {
+    const recordedChunks = [];
+    const options = {mimeType: 'audio/webm'};
+    const mediaRecorder = new MediaRecorder(stream, options);
+
+    // // Initiate stream
+    // if (window.URL) {
+    //     // Enable the player
+    //     player.srcObject = stream;
+    // } else {
+    //     // Some kind of fail safe?
+    //     player.src = stream;
+    // }
+
+    // Check if the player has been paused
+    player.onclick = function(){
+        stopped = false;
+        mediaRecorder.start();
+        mediaRecorder.addEventListener('dataavailable', function(e) {
+            console.log("Starting recording...")
+            if (e.data.size > 0) {
+                recordedChunks.push(e.data);
+            }
+        })
+    }
+
+    // Check if the player has been paused
+    stoper.onclick = function(){
+    
+        shouldStop = true;
+        if (shouldStop === true && stopped === false) {
+            console.log("Stopping recording...")
+            mediaRecorder.stop();
+            stopped = true;
+            recordedChunks = [];
+        }
+
+        mediaRecorder.addEventListener('stop', function() {
+            downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+            downloadLink.download = 'recorder.wav';
+        });
+    }
+    
+  };
+
+  navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+      .then(handleSuccess);
+</script>
