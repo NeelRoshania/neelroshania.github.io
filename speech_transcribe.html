@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/main.css">
 
+
         <!-- HEADER -->
         <div class="jumbotron">
             <div class="row">
@@ -26,8 +27,26 @@
             </div>
         </div>
 
+         <!-- CALIBRATION UNIT -->
+         <div class="container">
+            <div class="card border-primary mb-3">
+                <h5 class="card-header pt-4 pb-4">Microphone, voice amplitude and environment calibration</h5>
+                <div class="card-body">
+                    <p class="card-text">Check your microphone, and practice speaking to make sure the microphone can hear you</p>
+                    <br>
+                    <button class="btn bg-light text-primary" id="calibration">Start calibration</button>
+                    <div class="calibration">
+                        <canvas class="visualizer" width="640" height="100"></canvas> 
+                        <p id="decibel_approx"></p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+
         <!-- QUESTION RECORDING UNIT -->
-        <div class="container">
+        <div class="container" id="recording-unit">
             <div class="card border-primary mb-3">
                 <h5 class="card-header pt-4 pb-4">Record your responses</h5>
                 <div class="card-body">
@@ -43,7 +62,8 @@
                     <br>
 
                     <button class="btn bg-light text-primary" id="record">Record...</button>
-                    <button class="btn bg-light text-danger" id="stop">Stop</button>
+                    <!-- <button class="btn bg-light text-danger" id="cancel">Cancel recording</button> -->
+                    <button class="btn bg-light text-danger" id="stop">Stop recording</button>
                     <button class="btn bg-light text-success" id="complete">View results</button>
                     <p class="text-warning" id="session-status">*Session status</p>
                     <p class="text-primary pt-4 pb-4" id="output">Your transcription will be here...</p>

@@ -32,3 +32,11 @@ code {
     /* padding-right: 1em; */
     /* padding-top: 1em; */
 }
+
+.calibration {
+    padding-top: 1em;
+}
+
+#decibel_approx {
+    font-weight: bold;
+}
